@@ -1,0 +1,22 @@
+{
+    "name": "devmary/yii2-auth",
+    "description": "Two-Factor Authentication",
+    "type": "yii2-extension",
+    "keywords": ["yii2","extension"],
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "Mary Rachkovska",
+            "email": "test.codevery@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "yiisoft/yii2": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "devmary\\auth\\": ""
+        }
+    }
+}
