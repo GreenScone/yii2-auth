@@ -1,12 +1,12 @@
 <?php
 
-namespace app\modules\auth\controllers;
+namespace devmary\auth\controllers;
 
 use Yii;
 use app\models\LoginForm;
 use yii\web\Response;
-use app\modules\auth\models\GoogleAuth;
-use app\modules\auth\GoogleAuthenticator;
+use devmary\auth\models\GoogleAuth;
+use devmary\auth\GoogleAuthenticator;
 
 class LoginController extends \yii\web\Controller
 {

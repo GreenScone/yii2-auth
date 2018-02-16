@@ -1,9 +1,8 @@
 <?php
 
-namespace app\modules\auth\models;
+namespace devmary\auth\models;
 
 use Yii;
-//use app\modules\newmodule\models\User;
 
 /**
  * This is the model class for table "google_auth".

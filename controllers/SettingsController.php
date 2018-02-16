@@ -1,13 +1,13 @@
 <?php
 
-namespace app\modules\auth\controllers;
+namespace devmary\auth\controllers;
 
 use Yii;
 use yii\web\Controller;
-use app\modules\auth\models\SettingsForm;
-use app\modules\auth\GoogleAuthenticator;
-use app\modules\auth\models\GoogleAuth;
-use app\models\UserIdentity;
+use devmary\auth\models\SettingsForm;
+use devmary\auth\GoogleAuthenticator;
+use devmary\auth\models\GoogleAuth;
+use app\models\User;
 
 
 /**
@@ -26,7 +26,7 @@ class SettingsController extends Controller
         }
 
         $settings = new SettingsForm();
-        $user = UserIdentity::findByUsername($settings->username);
+        $user = User::findByUsername($settings->username);
         $gauth = new GoogleAuth();
         $guser = $gauth->findOne(['user_id'=>$user->id]);
 

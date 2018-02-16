@@ -1,16 +1,13 @@
 <?php
 
-namespace app\modules\auth\models;
+namespace devmary\auth\models;
 
 use Yii;
 use yii\base\Model;
 use yii\db\ActiveRecord;
-//use yii\web\User;
-use app\modules\auth\GoogleAuthenticator;
-//use app\modules\auth\models\UserAuth;
-use app\modules\auth\models\GoogleAuth;
-use yii\data\ActiveDataProvider;
-use app\models\UserIdentity;
+use devmary\auth\GoogleAuthenticator;
+use devmary\auth\models\GoogleAuth;
+use app\models\User;
 
 class SettingsForm extends Model
 {
@@ -28,11 +25,7 @@ class SettingsForm extends Model
     {
         $this->username = Yii::$app->user->identity->username;
         $user = $this->getUser();
-        //var_dump($user);
-        $this->_user = UserIdentity::findByUsername($this->username);
-        //$this->password = Yii::$app->user->identity->password;
-        //var_dump($this->_user);
-        //var_dump(UserIdentity::findByUsername($this->username));
+        $this->_user = User::findByUsername($this->username);
         $this->backupCode = $this->getBackupCode();
     }
 
@@ -42,7 +35,6 @@ class SettingsForm extends Model
             [['password'], 'required'],
             // password is validated by validatePassword()
             ['password', 'validatePassword'],
-            //['checkcode', 'verifyCode'],
             ['backupCode', 'number'],
         ];
     }
@@ -54,27 +46,12 @@ class SettingsForm extends Model
         $user_id = Yii::$app->user->identity->getId();
         $googleAuth = new GoogleAuthenticator;
         $gauth = new GoogleAuth();
-        //var_dump($user_id);
         $user = $gauth->findOne(['user_id'=>$user_id]);
         if($user) {
             $this->secretCode = $user->secret_code;
-           // var_dump('$user');
         } else {
             $this->secretCode = $googleAuth->createSecret();
-            //var_dump('not found');
         }
-
-        //var_dump($user);
-
-        //var_dump(Yii::$app->user->identity->secret_2fa);
-        //var_dump(Yii::$app->user->getIdentity());
-
-
-        /*if(Yii::$app->user->identity->secret_2fa) {
-            $this->secretCode = Yii::$app->user->identity->secret_2fa;
-        } else {
-            $this->secretCode = $googleAuth->createSecret();
-        }*/
 
         return $this->secretCode;
     }
@@ -96,16 +73,10 @@ class SettingsForm extends Model
         return $this->active;
     }
 
-
-   /* public function saveUserField(){
-        $user = $this->getUser();
-        var_dump($user);
-    }*/
-
     public function getUser()
     {
         if ($this->_user === false) {
-            $this->_user = UserIdentity::findByUsername($this->username);
+            $this->_user = User::findByUsername($this->username);
         }
 
         return $this->_user;
@@ -121,10 +92,6 @@ class SettingsForm extends Model
             }
         }
     }
-    /*public function validatePassword($user_pass, $password)
-    {
-       return \Yii::$app->security->validatePassword($user_pass, $password);
-    }*/
 
     public function verifyCode($code, $secret) {
         if (!$this->hasErrors()) {

@@ -1,6 +1,6 @@
 <?php
 
-namespace app\modules\auth;
+namespace devmary\auth;
 
 /**
  * auth module definition class
@@ -10,12 +10,12 @@ class Module extends \yii\base\Module
     /**
      * @inheritdoc
      */
-    public $controllerNamespace = 'app\modules\auth\controllers';
+    public $controllerNamespace = 'devmary\auth\controllers';
 
     /**
      * @inheritdoc
      */
-//    public $defaultRoute = 'app\modules\auth\controllers\SettingsController';
+//    public $defaultRoute = 'devmary\auth\controllers\SettingsController';
     public $defaultRoute = 'settings';
 
     /**

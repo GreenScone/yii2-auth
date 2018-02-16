@@ -1,6 +1,6 @@
 <?php
 
-namespace app\modules\auth;
+namespace devmary\auth;
 
 /**
  * PHP Class for handling Google Authenticator 2-factor authentication.
