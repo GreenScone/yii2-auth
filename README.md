@@ -54,6 +54,40 @@ Usage
 Once the extension is installed, use it in your login view file by  :
 
 ```php
+    <?php $form = ActiveForm::begin([
+        'id' => 'check-google-code',
+        'layout' => 'horizontal',
+        'action' => ['auth/login/ajax-login'],
+    ]); ?>
+
+    <?php yii\bootstrap\Modal::begin([
+        'id' => 'check-code',
+        'size' => 'modal-sm',
+        'clientOptions' => [
+            'backdrop' => false, 'keyboard' => true
+        ]
+    ]); ?>
+
+    <div class="form-group field-loginform-checkcode">
+        <label class="col-lg-12" for="loginform-checkcode">Google Authenticator code</label>
+        <div class="col-lg-12"><?= Html::textInput('LoginForm[checkCode]', '', ['class' => 'form-control', 'id' => 'loginform-checkcode']); ?></div>
+        <div class="col-lg-12"><div class="help-block help-block-error "></div></div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-lg-12">
+            <?= Html::submitButton('Send', ['class' => 'btn btn-primary', 'name' => 'send-code-button', 'id' => 'send-code-button']) ?>
+        </div>
+    </div>
+
+    <?php yii\bootstrap\Modal::end(); ?>
+
+    <?php ActiveForm::end(); ?>
+```
+
+and
+
+```php
 $styles = <<< CSS
 #check-code {
     background: rgba(0, 0, 0, 0.49);
@@ -124,36 +158,4 @@ jQuery('#check-google-code').submit(function(e){
 JS;
 
 $this->registerJs($script);
-```
-and
-```php
-    <?php $form = ActiveForm::begin([
-        'id' => 'check-google-code',
-        'layout' => 'horizontal',
-        'action' => ['auth/login/ajax-login'],
-    ]); ?>
-
-    <?php yii\bootstrap\Modal::begin([
-        'id' => 'check-code',
-        'size' => 'modal-sm',
-        'clientOptions' => [
-            'backdrop' => false, 'keyboard' => true
-        ]
-    ]); ?>
-
-    <div class="form-group field-loginform-checkcode">
-        <label class="col-lg-12" for="loginform-checkcode">Google Authenticator code</label>
-        <div class="col-lg-12"><?= Html::textInput('LoginForm[checkCode]', '', ['class' => 'form-control', 'id' => 'loginform-checkcode']); ?></div>
-        <div class="col-lg-12"><div class="help-block help-block-error "></div></div>
-    </div>
-
-    <div class="form-group">
-        <div class="col-lg-12">
-            <?= Html::submitButton('Send', ['class' => 'btn btn-primary', 'name' => 'send-code-button', 'id' => 'send-code-button']) ?>
-        </div>
-    </div>
-
-    <?php yii\bootstrap\Modal::end(); ?>
-
-    <?php ActiveForm::end(); ?>
 ```
