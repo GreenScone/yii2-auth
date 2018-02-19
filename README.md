@@ -61,7 +61,7 @@ $form = ActiveForm::begin([
 ]);
 ```
 
-and use following code in your login view file by  :
+and use following code in your login view file:
 
 ```php
     <?php $form = ActiveForm::begin([
