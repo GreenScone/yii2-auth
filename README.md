@@ -58,7 +58,8 @@ $form = ActiveForm::begin([
     ...
     'action' => ['auth/login/ajax-login'],
     ...
-]);```
+]);
+```
 
 and use following code in your login view file by  :
 
