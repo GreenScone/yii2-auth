@@ -173,4 +173,4 @@ $this->registerJs($script);
 Available action
 ----------------
 
-**/auth/settings** Displays settings form two-factor authentication
+**/auth/settings** Displays settings form for two-factor authentication
