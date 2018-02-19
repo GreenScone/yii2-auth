@@ -51,7 +51,16 @@ $ php yii migrate/up --migrationPath=@vendor/devmary/yii2-auth/migrations
 Usage
 -----
 
-Once the extension is installed, use it in your login view file by  :
+Once the extension is installed, add action to your login form:
+
+```php
+$form = ActiveForm::begin([
+    ...
+    'action' => ['auth/login/ajax-login'],
+    ...
+]);```
+
+and use following code in your login view file by  :
 
 ```php
     <?php $form = ActiveForm::begin([
