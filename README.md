@@ -10,7 +10,7 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-composer require devmary/yii2-auth
+composer require devmary/yii2-auth:@dev
 ```
 
 or add
