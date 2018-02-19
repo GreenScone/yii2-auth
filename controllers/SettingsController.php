@@ -158,7 +158,7 @@ class SettingsController extends Controller
                         $gauth->secret_code = $secret;
                         $gauth->status = (int)$status;
                         $gauth->backup_code = (int)$backup_code;
-                        $guser->active = true;
+                        $gauth->active = true;
                         $gauth->save();
 
                     }
