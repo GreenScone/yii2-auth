@@ -6,7 +6,7 @@ use Yii;
 use yii\base\Model;
 use yii\db\ActiveRecord;
 use devmary\auth\GoogleAuthenticator;
-use devmary\auth\models\GoogleAuth;
+use devmary\auth\models\GoogleAuth;//TODO ты с этим классом в 1 пространстве имен
 use app\models\User;
 
 class SettingsForm extends Model
