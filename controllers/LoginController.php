@@ -41,7 +41,7 @@ class LoginController extends \yii\web\Controller
                         return json_encode($response);
                     } else {
                         $model->login();
-                        return $this->goBack();
+                        return $this->goBack();//TODO goBack на ajax?
                     }
 
                 } else {
@@ -50,7 +50,7 @@ class LoginController extends \yii\web\Controller
                         'data' => \yii\widgets\ActiveForm::validate($model),
                         'success' => false
                     );
-                    return json_encode($result);
+                    return json_encode($result);//TODO разве нужно json_encode если ты уже указала что response json?
                 }
             }
         }
@@ -91,7 +91,7 @@ class LoginController extends \yii\web\Controller
             }
         }
 
-        return $result;
+        return $result;//TODO если не аякс то просто пустая страница?
     }
 
 }
