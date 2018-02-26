@@ -8,7 +8,7 @@ use yii\db\ActiveRecord;
 use devmary\auth\GoogleAuthenticator;
 use devmary\auth\models\GoogleAuth;
 use app\models\User;
-
+//TODO Желательно не забывать комментировать код + указывать @property у модели
 class SettingsForm extends Model
 {
     public $username;
@@ -24,8 +24,8 @@ class SettingsForm extends Model
     public function init()
     {
         $this->username = Yii::$app->user->identity->username;
-        $user = $this->getUser();
-        $this->_user = User::findByUsername($this->username);
+        $user = $this->getUser();//TODO а где используется эта переменная $user?
+        $this->_user = User::findByUsername($this->username);//TODO а зачем второй раз?
         $this->backupCode = $this->getBackupCode();
     }
 
@@ -85,7 +85,7 @@ class SettingsForm extends Model
     public function validatePassword($attribute, $params)
     {
         if (!$this->hasErrors()) {
-            $user = $this->_user;
+            $user = $this->_user;//TODO для чего лишняя переменная?
 
             if (!$user || !$user->validatePassword($this->password)) {
                 $this->addError($attribute, 'Incorrect password.');
@@ -94,7 +94,7 @@ class SettingsForm extends Model
     }
 
     public function verifyCode($code, $secret) {
-        if (!$this->hasErrors()) {
+        if (!$this->hasErrors()) {//TODO если есть ошибки то функция ничего не вернет?
             $googleAuth = new GoogleAuthenticator;
             $checkResult = $googleAuth->verifyCode($secret, $code, 0);
             if(!$checkResult) {
