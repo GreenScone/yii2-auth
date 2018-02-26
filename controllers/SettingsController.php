@@ -75,7 +75,7 @@ class SettingsController extends Controller
     }
 
     public function actionSubmit() {
-        $error = false;
+        $error = false;//TODO переменная всегда false?
         $result = array();
         if( Yii::$app->request->isAjax ) {
             $model = new SettingsForm();
@@ -87,7 +87,7 @@ class SettingsController extends Controller
                 $backup_code = $settings['backupCode'];
                 $password = $settings['password'];
                 if($model->validate()){
-                    if($status) {
+                    if($status) {//TODO я правильно понял что если прийдеи active true - вообще ничего не произойдет?
                         $result = array(
                             'error' => $error,
                             'modal' => true
@@ -96,7 +96,7 @@ class SettingsController extends Controller
                         $user_id = Yii::$app->getUser()->identity->getId();
                         $gauth = new GoogleAuth();
                         $guser = GoogleAuth::findOne(['user_id'=>$user_id]);
-                        if($guser) {
+                        if($guser) {//TODO зачем дублировать присваение? почему просто не переопределить 
                             $guser->user_id = $user_id;
                             $guser->secret_code = $secret;
                             $guser->status = (int)$status;
@@ -145,7 +145,7 @@ class SettingsController extends Controller
                     $gauth = new GoogleAuth();
                     $guser = GoogleAuth::findOne(['user_id'=>$user_id]);
 
-                    if($guser) {
+                    if($guser) {//TODO зачем дублировать присваение? почему просто не переопределить 
                         $guser->user_id = $user_id;
                         $guser->secret_code = $secret;
                         $guser->status = (int)$status;
@@ -207,7 +207,7 @@ class SettingsController extends Controller
                     if ($guser->active) {
                         $guser->status = true;
                         $guser->save();
-                        return true;
+                        return true;//TODO А если save не прошел?
                     }
                 }
             }
