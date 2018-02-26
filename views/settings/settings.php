@@ -22,7 +22,7 @@ $styles = <<< CSS
 CSS;
 
 $this->registerCss($styles);
-
+//TODO
 $script = <<< JS
 
 jQuery('#check-google-code').submit(function(e){
@@ -55,6 +55,7 @@ JS;
 $this->registerJs($script);
 ?>
 <script>
+    //TODO
     function createNewSecret(){
         $.ajax({
             url: '/auth/settings/secret',
@@ -159,7 +160,7 @@ $this->registerJs($script);
         <?php echo Html::tag('div', $msg, ['class' => 'alert alert-success alert-dismissable']); ?>
     <?php endif; ?>
 
-    <?php $form = ActiveForm::begin([
+    <?php $form = ActiveForm::begin([ //TODO
         'id' => 'auth-2fa',
         'layout' => 'horizontal',
         'options' => ['name' => 'auth-2fa'],
@@ -198,7 +199,7 @@ $this->registerJs($script);
 
     <?php ActiveForm::end(); ?>
 
-    <?php $form = ActiveForm::begin([
+    <?php $form = ActiveForm::begin([ //TODO
         'id' => 'check-google-code',
         'layout' => 'horizontal',
     ]); ?>
